@@ -1,11 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { AppService } from './app.service';
-import { Cat } from './app.types';
+import { CatService } from './cat.service';
+import { Cat } from '../app.types';
 
-@Controller({ path: 'api' })
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+@Controller({ path: 'api/cat' })
+export class CatController {
+  constructor(private readonly appService: CatService) {}
 
   @Get('hello')
   getHello(): string {

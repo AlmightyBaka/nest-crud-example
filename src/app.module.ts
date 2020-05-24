@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { CatService } from './cats/cat.service';
+import { CatController } from './cats/cat.controller';
+import { CatGroupController } from './catGroup/catGroup.controller';
 // import { GraphQLModule } from '@nestjs/graphql';
 
 
@@ -10,7 +11,7 @@ import { AppService } from './app.service';
     //   typeDefs: "./keystore.graphql"
     // }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [CatController, CatGroupController],
+  providers: [CatService],
 })
 export class AppModule {}

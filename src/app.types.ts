@@ -28,6 +28,8 @@ export type Cat = {
 }
 
 export type CatGroup = {
+    name: string,
+    location: string,
     cats: Cat[],
     size: number,
 }
