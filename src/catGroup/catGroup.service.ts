@@ -5,7 +5,7 @@ import { Cat, Colour, Pattern } from '../app.types'
 import { randomEnumKey } from '../utils/utils';
 
 @Injectable()
-export class CatService {
+export class CatGroupService {
   getHello(): string {
     return 'Hello World!';
   }
