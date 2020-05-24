@@ -5,11 +5,11 @@ import { Cat } from './cat.types';
 
 @Controller({ path: 'api/cat' })
 export class CatController {
-  constructor(private readonly appService: CatService) {}
+  constructor(private readonly service: CatService) {}
 
   @Get('hello')
   getHello(): string {
-    return this.appService.getHello();
+    return this.service.getHello();
   }
 
   // @Get()
@@ -19,6 +19,6 @@ export class CatController {
 
   @Get('random')
   getRandomCat(): Cat {
-    return this.appService.getRandomCat();
+    return this.service.getRandomCat();
   }
 }

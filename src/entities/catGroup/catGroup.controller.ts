@@ -3,9 +3,9 @@ import { Controller, Get } from '@nestjs/common';
 import { CatGroupService } from './catGroup.service';
 import { CatGroup } from './catGroup.types';
 
-@Controller({ path: 'api' })
+@Controller({ path: 'api/gang' })
 export class CatGroupController {
-  constructor(private readonly appService: CatGroupService) {}
+  constructor(private readonly service: CatGroupService) {}
 
   // @Get()
   // getCats(): Cat[] {
@@ -14,6 +14,6 @@ export class CatGroupController {
 
   @Get('random')
   getRandomCatGroup(): CatGroup {
-    return this.appService.getRandomCatGroup();
+    return this.service.getRandomCatGroup();
   }
 }
