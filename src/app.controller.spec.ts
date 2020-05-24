@@ -1,22 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './cats/app.controller';
-import { CatService } from './cats/cat.service';
+import { CatService } from './entities/cats/cat.service';
+import { CatGroupService } from './entities/catGroup/catGroup.service';
+import { CatController } from './entities/cats/cat.controller';
+import { CatGroupController } from './entities/catGroup/catGroup.controller';
 
-describe('AppController', () => {
-  let appController: AppController;
 
-  beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [CatService],
-    }).compile();
+// TODO: tests
+// describe('AppController', () => {
 
-    appController = app.get<AppController>(AppController);
-  });
+//   beforeEach(async () => {
+//     await Test.createTestingModule({
+//       controllers: [CatController, CatGroupController],
+//       providers: [CatService, CatGroupService],
+//     }).compile();
+//   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
-    });
-  });
-});
+//   describe('root', () => {
+//     it('should return "Hello World!"', () => {
+//       expect(appController.getHello()).toBe('Hello World!');
+//     });
+//   });
+// });

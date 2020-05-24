@@ -1,3 +1,5 @@
+import { CatGroup } from "src/entities/catGroup/catGroup.types";
+
 // type Colour = 'white' | 'black' | 'Ginger'| 'Grey'| 'Cream'| 'Brown'| 'Cinnamon'| 'Fawn' 
 export enum Colour {
     WHITE = 'White',
@@ -25,11 +27,4 @@ export type Cat = {
     colour: Colour | Colour[],
     pattern: Pattern,
     group?: CatGroup,
-}
-
-export type CatGroup = {
-    name: string,
-    location: string,
-    cats: Cat[],
-    size: number,
 }

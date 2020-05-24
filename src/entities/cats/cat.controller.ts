@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 
 import { CatService } from './cat.service';
-import { Cat } from '../app.types';
+import { Cat } from './cat.types';
 
 @Controller({ path: 'api/cat' })
 export class CatController {

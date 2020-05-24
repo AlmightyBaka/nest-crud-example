@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import * as faker from 'faker'
 
-import { Cat, Colour, Pattern } from '../app.types'
-import { randomEnumKey } from '../utils/utils';
+import { Cat, Colour, Pattern } from './cat.types'
+import { randomEnumKey } from '../../utils/utils';
 
 @Injectable()
 export class CatService {
