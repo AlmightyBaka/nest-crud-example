@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CatService } from './entities/cats/cat.service';
-import { CatGroupService } from './entities/catGroup/catGroup.service';
-import { CatController } from './entities/cats/cat.controller';
-import { CatGroupController } from './entities/catGroup/catGroup.controller';
+import { CatService } from './modules/cats/cat.service';
+import { CatGroupService } from './modules/catGroup/catGroup.service';
+import { CatController } from './modules/cats/cat.controller';
+import { CatGroupController } from './modules/catGroup/catGroup.controller';
 
 
 // TODO: tests

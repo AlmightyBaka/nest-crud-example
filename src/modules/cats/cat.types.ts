@@ -1,4 +1,4 @@
-import { CatGroup } from "src/entities/catGroup/catGroup.types";
+import { CatGroup } from "src/modules/catGroup/catGroup.types";
 
 // type Colour = 'white' | 'black' | 'Ginger'| 'Grey'| 'Cream'| 'Brown'| 'Cinnamon'| 'Fawn' 
 export enum Colour {

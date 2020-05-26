@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 // import { GraphQLModule } from '@nestjs/graphql';
-import { CatsModule } from './entities/cats/cats.module';
-import { CatGroupModule } from './entities/catGroup/catGroup.module'
+import { CatsModule } from './modules/cats/cats.module';
+import { CatGroupModule } from './modules/catGroup/catGroup.module'
 
 
 @Module({
