@@ -14,14 +14,7 @@ import { CatGroupService } from './entities/catGroup/catGroup.service'
     //   typeDefs: "./keystore.graphql"
     // }),
     // TODO: move out of code
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      host: 'localhost',
-      port: 27017,
-      database: 'test',
-      entities: [],
-      synchronize: true,
-    })
+    TypeOrmModule.forRoot()
   ],
   controllers: [CatController, CatGroupController],
   providers: [CatService, CatGroupService],
