@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { CatController } from './entities/cats/cat.controller'
-import { CatGroupController } from './entities/catGroup/catGroup.controller'
-import { CatService } from './entities/cats/cat.service'
-import { CatGroupService } from './entities/catGroup/catGroup.service'
 // import { GraphQLModule } from '@nestjs/graphql';
+import { CatsModule } from './entities/cats/cats.module';
+import { CatGroupModule } from './entities/catGroup/catGroup.module'
 
 
 @Module({
@@ -14,9 +12,9 @@ import { CatGroupService } from './entities/catGroup/catGroup.service'
     //   typeDefs: "./keystore.graphql"
     // }),
     // TODO: move out of code
-    TypeOrmModule.forRoot()
+    TypeOrmModule.forRoot(),
+    CatsModule,
+    CatGroupModule
   ],
-  controllers: [CatController, CatGroupController],
-  providers: [CatService, CatGroupService],
 })
 export class AppModule {}
