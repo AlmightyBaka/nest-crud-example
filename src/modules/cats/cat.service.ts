@@ -1,11 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import * as faker from 'faker'
 
 import { Cat, Colour, Pattern } from './cat.types'
 import { randomEnumKey } from '../../utils/utils';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CatService {
+  constructor(
+    @InjectRepository(Cat) private catRepository: Repository<Cat>,
+    @Inject(forwardRef(() => CatService))
+    private catService: CatService,
+  ) {
+  }
+  
   getHello(): string {
     return 'Hello World!';
   }
@@ -26,5 +35,9 @@ export class CatService {
       colour,
       pattern,
     }
+  }
+
+  async getCats(): Promise<Cat[]> {
+    return await this.catRepository.find()
   }
 }

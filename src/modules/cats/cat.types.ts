@@ -1,3 +1,5 @@
+import { prop, getModelForClass } from '@typegoose/typegoose';
+
 import { CatGroup } from "src/modules/catGroup/catGroup.types";
 
 // type Colour = 'white' | 'black' | 'Ginger'| 'Grey'| 'Cream'| 'Brown'| 'Cinnamon'| 'Fawn' 
@@ -22,9 +24,13 @@ export enum Pattern {
     COLOUR_POINT = "Colour point",
 }
 
-export type Cat = {
-    name: string,
-    colour: Colour | Colour[],
-    pattern: Pattern,
-    group?: CatGroup,
+export class Cat {
+    @prop()
+    name: string
+    @prop()
+    colour: Colour | Colour[]
+    @prop()
+    pattern: Pattern
+    @prop()
+    group?: CatGroup
 }
