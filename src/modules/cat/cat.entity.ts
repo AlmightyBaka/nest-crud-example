@@ -1,4 +1,3 @@
-Roman Blackz, [27.05.20 15:05]
 import {
   BaseEntity,
   Column,

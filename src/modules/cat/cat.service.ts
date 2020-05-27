@@ -8,12 +8,7 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class CatService {
-  constructor(
-    @InjectRepository(Cat) private catRepository: Repository<Cat>,
-    @Inject(forwardRef(() => CatService))
-    private catService: CatService,
-  ) {
-  }
+  constructor(@InjectRepository(Cat) private catRepository: Repository<Cat>) {}
   
   getHello(): string {
     return 'Hello World!';
