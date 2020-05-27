@@ -3,7 +3,7 @@ import * as faker from 'faker'
 
 import { CatGroup } from './catGroup.types'
 import { randomNum } from '../../utils/utils';
-import { CatService } from '../cats/cat.service';
+import { CatService } from '../cat/cat.service';
 
 @Injectable()
 export class CatGroupService {

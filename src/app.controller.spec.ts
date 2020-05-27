@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CatService } from './modules/cats/cat.service';
+import { CatService } from './modules/cat/cat.service';
 import { CatGroupService } from './modules/catGroup/catGroup.service';
-import { CatController } from './modules/cats/cat.controller';
+import { CatController } from './modules/cat/cat.controller';
 import { CatGroupController } from './modules/catGroup/catGroup.controller';
 
 
