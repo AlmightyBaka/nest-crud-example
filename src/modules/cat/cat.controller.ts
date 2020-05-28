@@ -12,13 +12,13 @@ export class CatController {
     return this.service.getHello();
   }
 
-  // @Get()
-  // async getCats(): Promise<Cat[]> {
-  //   return await this.service.getCats();
-  // }
+  @Get()
+  async getCats(): Promise<any> {
+    return await this.service.getCats();
+  }
 
   @Get('random')
-  getRandomCat(): Cat {
+  getRandomCat(): Cat | Error {
     return this.service.getRandomCat();
   }
 }

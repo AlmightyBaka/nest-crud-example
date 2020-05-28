@@ -1,7 +1,8 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import * as faker from 'faker'
 
-import { Cat, Colour, Pattern } from './cat.types'
+import { Colour, Pattern } from './cat.types'
+import { Cat } from './cat.entity'
 import { randomEnumKey } from '../../utils/utils';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -14,7 +15,7 @@ export class CatService {
     return 'Hello World!';
   }
 
-  getRandomCat(): Cat {
+  getRandomCat(): any {
     let colour
     const pattern = Pattern[randomEnumKey(Pattern)]
 
@@ -25,6 +26,7 @@ export class CatService {
     else
       colour = Colour[randomEnumKey(Colour)]
 
+    // return new Error('NEI')
     return {
       name: faker.fake('{{name.firstName}}'),
       colour,
