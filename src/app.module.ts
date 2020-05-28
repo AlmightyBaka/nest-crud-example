@@ -11,7 +11,6 @@ import { CatGroupModule } from './modules/catGroup/catGroup.module'
     // GraphQLModule.forRoot({
     //   typeDefs: "./keystore.graphql"
     // }),
-    // TODO: move config out of code
     TypeOrmModule.forRoot(),
     CatsModule,
     CatGroupModule,

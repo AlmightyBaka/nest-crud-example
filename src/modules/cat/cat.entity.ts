@@ -9,10 +9,10 @@ import {
 @Entity()
 export class Cat extends BaseEntity {
   @ObjectIdColumn()
-  _id: string;
+  _id?: string;
 
   @PrimaryColumn()
-  id: string;
+  id?: string;
 
   @Column()
   colour: string;
