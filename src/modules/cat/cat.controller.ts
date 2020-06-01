@@ -23,7 +23,7 @@ export class CatController {
   }
 
   @Get('id/:id')
-  async getCatById(@Param('id') id: string): Promise<Cat[]> {
+  async getCatById(@Param('id') id: string): Promise<Cat> {
     return await this.service.getCatById(id);
   }
 

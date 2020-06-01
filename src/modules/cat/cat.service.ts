@@ -43,8 +43,8 @@ export class CatService {
   }
 
   // TODO
-  async getCatById(id: string): Promise<Cat[]> {
-    return await this.catRepository.find({ id })
+  async getCatById(id: string): Promise<Cat> {
+    return await this.catRepository.findOne({ id })
   }
 
   async saveRandomCat(): Promise<any> {
