@@ -39,8 +39,13 @@ export class CatService {
     return await this.catRepository.find()
   }
 
-  async getCat(name: string): Promise<Cat[]> {
+  async getCatByName(name: string): Promise<Cat[]> {
     return await this.catRepository.find({ name })
+  }
+
+  // TODO
+  async getCatById(id: string): Promise<Cat[]> {
+    return await this.catRepository.find({ _id: id })
   }
 
   async saveRandomCat(): Promise<any> {
@@ -49,5 +54,10 @@ export class CatService {
     await this.catRepository.save(cat)
 
     return cat
+  }
+
+  async deleteCat(id: string): Promise<any> {
+    const cat = await this.getCatById(id)
+    return await this.catRepository.remove(cat)
   }
 }

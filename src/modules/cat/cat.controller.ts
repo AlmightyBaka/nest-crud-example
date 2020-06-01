@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Delete } from '@nestjs/common';
 
 import { CatService } from './cat.service';
 import { Cat } from './cat.entity';
@@ -18,8 +18,13 @@ export class CatController {
   }
 
   @Get('name/:name')
-  async getCat(@Param('name') name: string): Promise<any> {
-    return await this.service.getCat(name);
+  async getCatByName(@Param('name') name: string): Promise<Cat[]> {
+    return await this.service.getCatByName(name);
+  }
+
+  @Get('id/:id')
+  async getCatById(@Param('id') id: string): Promise<Cat[]> {
+    return await this.service.getCatById(id);
   }
 
   @Get('random')
@@ -32,5 +37,10 @@ export class CatController {
     const cat = this.service.saveRandomCat();
 
     return cat
+  }
+
+  @Delete('/:id')
+  deleteCat(@Param('id') id: string): Promise<void> {
+    return this.service.deleteCat(id);
   }
 }
