@@ -25,7 +25,6 @@ export class CatService {
 
     // deciding if cat has multiple colours
     if (pattern !== Pattern.SOLID)
-      // TODO: add random for 3 colours
       cat.colour = [Colour[randomEnumKey(Colour)], Colour[randomEnumKey(Colour)]]
     else
       cat.colour = Colour[randomEnumKey(Colour)]
@@ -45,7 +44,7 @@ export class CatService {
 
   // TODO
   async getCatById(id: string): Promise<Cat[]> {
-    return await this.catRepository.find({ _id: id })
+    return await this.catRepository.find({ id: id })
   }
 
   async saveRandomCat(): Promise<any> {
@@ -57,7 +56,23 @@ export class CatService {
   }
 
   async deleteCat(id: string): Promise<any> {
+    console.log(id)
     const cat = await this.getCatById(id)
+    console.log(cat)
     return await this.catRepository.remove(cat)
+  }
+
+  //TODO
+  async createCat(cat: Cat): Promise<any> {
+    console.log(cat)
+     await this.catRepository.save(cat)
+
+    return cat
+  }
+
+  // TODO
+  async updateCat(id: string, cat: Cat): Promise<any> {
+    console.log(id)
+    return await this.catRepository.update(id, cat)
   }
 }
