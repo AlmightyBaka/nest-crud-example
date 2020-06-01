@@ -28,7 +28,7 @@ export class CatController {
   }
 
   @Get('random')
-  getRandomCat(): Cat | Error {
+  getRandomCat(): Cat {
     return this.service.getRandomCat();
   }
 
