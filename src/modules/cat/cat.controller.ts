@@ -17,7 +17,7 @@ export class CatController {
     return await this.service.getCats();
   }
 
-  @Get('/:name')
+  @Get('name/:name')
   async getCat(@Param('name') name: string): Promise<any> {
     return await this.service.getCat(name);
   }
@@ -29,8 +29,6 @@ export class CatController {
 
   @Get('save')
   saveRandomCat(): Promise<Cat> {
-    console.log()
-
     const cat = this.service.saveRandomCat();
 
     return cat

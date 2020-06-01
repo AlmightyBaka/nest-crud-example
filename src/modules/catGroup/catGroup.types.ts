@@ -1,4 +1,4 @@
-import { Cat } from "src/modules/cat/cat.types";
+import { Cat } from "../cat/cat.entity";
 
 export type CatGroup = {
     name: string,

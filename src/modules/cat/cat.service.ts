@@ -1,8 +1,8 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import * as faker from 'faker'
+import { v4 as uuid } from 'uuid';
 
-import { Colour, Pattern } from './cat.types'
-import { Cat } from './cat.entity'
+import { Cat, Colour, Pattern } from './cat.entity'
 import { randomEnumKey } from '../../utils/utils';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -15,23 +15,24 @@ export class CatService {
     return 'Hello World!';
   }
 
-  getRandomCat(): any {
-    let colour
+  getRandomCat(): Cat {
+    const cat = new Cat()
+    
+    cat._id = uuid()
+
     const pattern = Pattern[randomEnumKey(Pattern)]
+    cat.pattern = pattern
 
     // deciding if cat has multiple colours
     if (pattern !== Pattern.SOLID)
       // TODO: add random for 3 colours
-      colour = [Colour[randomEnumKey(Colour)], Colour[randomEnumKey(Colour)]]
+      cat.colour = [Colour[randomEnumKey(Colour)], Colour[randomEnumKey(Colour)]]
     else
-      colour = Colour[randomEnumKey(Colour)]
+      cat.colour = Colour[randomEnumKey(Colour)]
 
-    // return new Error('NEI')
-    return {
-      name: faker.fake('{{name.firstName}}'),
-      colour,
-      pattern,
-    }
+    cat.name = faker.fake('{{name.firstName}}')
+
+    return cat
   }
 
   async getCats(): Promise<Cat[]> {
@@ -42,7 +43,7 @@ export class CatService {
     return await this.catRepository.find({ name })
   }
 
-  async saveRandomCat(): Promise<Cat> {
+  async saveRandomCat(): Promise<any> {
     const cat = this.getRandomCat()
     
     await this.catRepository.save(cat)
