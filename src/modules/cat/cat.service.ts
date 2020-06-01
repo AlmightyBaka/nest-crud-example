@@ -55,6 +55,7 @@ export class CatService {
     return cat
   }
 
+  //TODO
   async deleteCat(id: string): Promise<any> {
     console.log(id)
     const cat = await this.getCatById(id)
