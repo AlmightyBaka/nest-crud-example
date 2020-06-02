@@ -17,8 +17,6 @@ export class CatService {
 
   getRandomCat(): Cat {
     const cat = new Cat()
-    
-    cat._id = uuid()
 
     const pattern = Pattern[randomEnumKey(Pattern)]
     cat.pattern = pattern
@@ -42,7 +40,6 @@ export class CatService {
     return await this.catRepository.find({ name })
   }
 
-  // TODO
   async getCatById(id: string): Promise<Cat> {
     return await this.catRepository.findOne(id)
   }
