@@ -1,4 +1,4 @@
-import { Injectable, Inject, forwardRef } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import * as faker from 'faker'
 import { v4 as uuid } from 'uuid';
 
@@ -44,7 +44,7 @@ export class CatService {
 
   // TODO
   async getCatById(id: string): Promise<Cat> {
-    return await this.catRepository.findOne({ id })
+    return await this.catRepository.findOne(id)
   }
 
   async saveRandomCat(): Promise<any> {
@@ -58,7 +58,7 @@ export class CatService {
   //TODO
   async deleteCat(id: string): Promise<any> {
     console.log(id)
-    const cat = await this.getCatById(id)
+    const cat = await this.catRepository.findOne(id)
     console.log(cat)
     return await this.catRepository.remove(cat)
   }
