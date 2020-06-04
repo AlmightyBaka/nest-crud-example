@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as faker from 'faker'
-import { v4 as uuid } from 'uuid';
 
 import { Cat } from './cat.entity'
 import { randomEnumKey } from '../../utils/utils';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Pattern, Colour } from './cat.types';
+import { Pattern, Colour, CatDto } from './cat.types';
 
 @Injectable()
 export class CatService {
@@ -59,16 +58,26 @@ export class CatService {
   }
 
   //TODO
-  async createCat(cat: Cat): Promise<any> {
-    console.log(cat)
-    const newCat = Object.assign(new Cat(), cat)
+  async createCat(catDto: CatDto): Promise<any> {
+    console.log(catDto)
+    const newCat = Object.assign(new Cat(), catDto)
+    console.log(newCat)
     return newCat.save()
   }
 
   // TODO
-  async updateCat(id: string, cat: Cat): Promise<any> {
-    cat = await this.catRepository.findOne(id)
-    return await cat.save
-    // return await this.catRepository.update(id, cat)
+  async updateCat(id: string, catUpdate: CatDto): Promise<any> {
+    const cat = await this.catRepository.findOne(id)
+    const catCopy = new Cat()
+
+    Object.assign(catCopy, cat)
+    delete catCopy._id
+
+    return await catCopy.save()
+    // const cat = await this.catRepository.findOne(id)
+    // const newCat = Object.assign(cat, catUpdate)
+    // console.log(catUpdate)
+    // // return newCat.up()
+    // return await this.catRepository.update(id, newCat)
   }
 }

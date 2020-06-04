@@ -2,6 +2,7 @@ import { Controller, Get, Param, Delete, Post, Body, Patch } from '@nestjs/commo
 
 import { CatService } from './cat.service';
 import { Cat } from './cat.entity';
+import { CatDto } from './cat.types';
 
 @Controller({ path: 'api/cat' })
 export class CatController {
@@ -40,14 +41,14 @@ export class CatController {
   }
 
   @Post()
-  createCat(@Body() cat: Cat): Promise<Cat> {
+  createCat(@Body() cat: CatDto): Promise<Cat> {
     return this.service.createCat(cat);
   }
 
   @Patch('/:id')
   updateUser(
     @Param('id') id: string,
-    @Body() cat: Cat,
+    @Body() cat: CatDto,
   ): Promise<Cat> {
     return this.service.updateCat(id, cat);
   }
