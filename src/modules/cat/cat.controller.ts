@@ -52,7 +52,6 @@ export class CatController {
     return this.service.updateCat(id, cat);
   }
 
-  // TODO
   @Delete('/:id')
   deleteCat(@Param('id') id: string): Promise<any> {
     return this.service.deleteCat(id);

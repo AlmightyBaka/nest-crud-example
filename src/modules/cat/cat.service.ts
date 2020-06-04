@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import * as faker from 'faker'
 import { v4 as uuid } from 'uuid';
 
-import { Cat, Colour, Pattern } from './cat.entity'
+import { Cat } from './cat.entity'
 import { randomEnumKey } from '../../utils/utils';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Pattern, Colour } from './cat.types';
 
 @Injectable()
 export class CatService {
@@ -52,25 +53,22 @@ export class CatService {
     return cat
   }
 
-  //TODO
   async deleteCat(id: string): Promise<any> {
-    console.log(id)
     const cat = await this.catRepository.findOne(id)
-    console.log(cat)
-    return await this.catRepository.remove(cat)
+    return await this.catRepository.delete({ _id: cat._id})
   }
 
   //TODO
   async createCat(cat: Cat): Promise<any> {
     console.log(cat)
-     await this.catRepository.save(cat)
-
-    return cat
+    const newCat = Object.assign(new Cat(), cat)
+    return newCat.save()
   }
 
   // TODO
   async updateCat(id: string, cat: Cat): Promise<any> {
-    console.log(id)
-    return await this.catRepository.update(id, cat)
+    cat = await this.catRepository.findOne(id)
+    return await cat.save
+    // return await this.catRepository.update(id, cat)
   }
 }
