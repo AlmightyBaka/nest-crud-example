@@ -57,7 +57,6 @@ export class CatService {
     return await this.catRepository.delete({ _id: cat._id})
   }
 
-  //TODO
   async createCat(catDto: CatDto): Promise<any> {
     console.log(catDto)
     const newCat = Object.assign(new Cat(), catDto)
@@ -67,11 +66,10 @@ export class CatService {
 
   // TODO
   async updateCat(id: string, catUpdate: CatDto): Promise<any> {
-    const cat = await this.catRepository.findOne(id)
+    const cat = await this.catRepository.findOne({ id })
     const catCopy = new Cat()
 
     Object.assign(catCopy, cat)
-    delete catCopy._id
 
     return await catCopy.save()
     // const cat = await this.catRepository.findOne(id)
