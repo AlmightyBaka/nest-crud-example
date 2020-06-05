@@ -58,24 +58,15 @@ export class CatService {
   }
 
   async createCat(catDto: CatDto): Promise<any> {
-    console.log(catDto)
     const newCat = Object.assign(new Cat(), catDto)
-    console.log(newCat)
     return newCat.save()
   }
 
-  // TODO
   async updateCat(id: string, catUpdate: CatDto): Promise<any> {
-    const cat = await this.catRepository.findOne({ id })
-    const catCopy = new Cat()
+    let cat = await this.catRepository.findOne(id);
+    cat = Object.assign(cat, catUpdate);
 
-    Object.assign(catCopy, cat)
-
-    return await catCopy.save()
-    // const cat = await this.catRepository.findOne(id)
-    // const newCat = Object.assign(cat, catUpdate)
-    // console.log(catUpdate)
-    // // return newCat.up()
-    // return await this.catRepository.update(id, newCat)
+    await this.catRepository.update({ _id: cat._id }, cat);
+    return cat;
   }
 }

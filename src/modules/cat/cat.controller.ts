@@ -46,7 +46,7 @@ export class CatController {
   }
 
   @Patch('/:id')
-  updateUser(
+  updateCat(
     @Param('id') id: string,
     @Body() cat: CatDto,
   ): Promise<Cat> {
